@@ -166,10 +166,10 @@ public abstract class CompileConfiguration implements Runnable {
 		extension.setMinecraftProvider(minecraftProvider);
 		minecraftProvider.provide();
 
-		// Created any layered mapping files.
+		final DependencyInfo mappingsDep = DependencyInfo.create(getProject(), Configurations.MAPPINGS);
+		// Created any layered mapping files. (After resolving the mappings dependency)
 		LayeredMappingsFactory.afterEvaluate(configContext);
 
-		final DependencyInfo mappingsDep = DependencyInfo.create(getProject(), Configurations.MAPPINGS);
 		final MappingConfiguration mappingConfiguration = MappingConfiguration.create(getProject(), configContext.serviceFactory(), mappingsDep, minecraftProvider);
 		extension.setMappingConfiguration(mappingConfiguration);
 		mappingConfiguration.applyToProject(getProject(), mappingsDep);

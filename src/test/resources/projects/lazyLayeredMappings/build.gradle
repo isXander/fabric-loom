@@ -1,0 +1,14 @@
+plugins {
+	id 'fabric-loom'
+}
+
+dependencies {
+	minecraft libs.minecraft
+	mappings project.provider {
+		loom.layered() {
+			officialMojangMappings()
+		}
+	}
+
+	modImplementation libs.fabricLoader
+}
