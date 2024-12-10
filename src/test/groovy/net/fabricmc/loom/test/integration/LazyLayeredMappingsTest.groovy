@@ -33,18 +33,18 @@ import static net.fabricmc.loom.test.LoomTestConstants.STANDARD_TEST_VERSIONS
 import static org.gradle.testkit.runner.TaskOutcome.SUCCESS
 
 class LazyLayeredMappingsTest extends Specification implements GradleProjectTestTrait {
-    @Unroll
-    def "Ensure mappings configuration is lazy when using layered #version"() {
-        setup:
-        def gradle = gradleProject(project: "lazyLayeredMappings", version: version)
+	@Unroll
+	def "Ensure mappings configuration is lazy when using layered #version"() {
+		setup:
+		def gradle = gradleProject(project: "lazyLayeredMappings", version: version)
 
-        when:
-        def result = gradle.run(task: "build")
+		when:
+		def result = gradle.run(task: "build")
 
-        then:
-        result.task(":build").outcome == SUCCESS
+		then:
+		result.task(":build").outcome == SUCCESS
 
-        where:
-        version << STANDARD_TEST_VERSIONS
-    }
+		where:
+		version << STANDARD_TEST_VERSIONS
+	}
 }
